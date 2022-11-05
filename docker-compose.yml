@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+
+  api:
+    container_name: currency-converter
+    image: currency-converter:latest
+    build:
+      target: dev
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8000:8000"
+    env_file: .env
+    environment:
+      - "DATABASE_URI=postgresql://postgres:postgres@db:5432/postgres"
+    working_dir: /home/appuser/api
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./api:/home/appuser/api
+    depends_on:
+      - db
+
+  db:
+    container_name: db-currency-converter
+    image: postgres:15
+    restart: always
+    ports:
+      - "5435:5432"
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
