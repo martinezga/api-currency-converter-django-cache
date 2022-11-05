@@ -31,9 +31,9 @@ CMD bin bash
 
 FROM base as prod
 
+WORKDIR /home/appuser
+
 COPY --chown=1000:1000 ./api ./
 
-WORKDIR /home/appuser/api
-
 ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
-CMD gunicorn --workers 4 --bind 0.0.0.0:$PORT api.configurations.wsgi:app
+CMD gunicorn --workers 4 --bind 0.0.0.0:$PORT configurations.wsgi:application
