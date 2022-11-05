@@ -1,0 +1,29 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "==3.2.16"
+djangorestframework = "*"
+python-decouple = "*"
+django-cors-headers = "*"
+
+[dev-packages]
+psycopg2-binary = "*"
+
+[scripts]
+server          = "python api/manage.py runserver"
+startapp        = "python api/manage.py startapp"
+migrate         = "python api/manage.py migrate"
+sqlmigrate      = "python api/manage.py sqlmigrate"
+makemigrations  = "python api/manage.py makemigrations"
+showmigrations  = "python api/manage.py showmigrations"
+createsuperuser = "python api/manage.py createsuperuser"
+collectstatic   = "python api/manage.py collectstatic"
+shell           = "python api/manage.py shell"
+dumpdata        = "python api/manage.py dumpdata"
+loaddata        = "python api/manage.py loaddata"
+
+[requires]
+python_version = "3.8"
