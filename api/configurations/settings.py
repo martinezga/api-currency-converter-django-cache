@@ -189,11 +189,25 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ],
 }
-
+# -- Django OAuth Toolkit
+# https://django-oauth-toolkit.readthedocs.io/en/latest/rest-framework/rest-framework.html
 OAUTH2_PROVIDER = {
     # this is the list of available scopes
     'SCOPES': {
         'read': 'Read scope',
         'write': 'Write scope',
-    }
+    },
+    # Default value is 36000 seg = 10 hrs
+    # 'ACCESS_TOKEN_EXPIRE_SECONDS': 36000,
 }
+
+TOKEN_EXPIRATION = '10 hours'
+
+# -- Sendmail Configuration
+EMAIL_BACKEND = config('EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
+EMAIL_HOST = config('EMAIL_HOST', default='')
+EMAIL_HOST_USER = config('EMAIL_USER', default='')
+EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD', default='')
+EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)
+EMAIL_USE_TLS = config('EMAIL_TLS', default=True, cast=bool)
+DEFAULT_FROM_EMAIL = config('EMAIL_DEFAULT')
