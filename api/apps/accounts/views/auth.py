@@ -1,6 +1,9 @@
 import smtplib
 
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import update_last_login
+from django.utils import timezone
+from oauth2_provider.models import AccessToken
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -23,7 +26,7 @@ class AuthView(ViewSet):
         email = request.data.get('email')
 
         if not email:
-            response['data']['error'] = 'Email not sent'
+            response['data']['error'] = 'Email address is required'
         else:
             try:
                 user = UserModel.objects.get(email=email)
@@ -47,7 +50,7 @@ class AuthView(ViewSet):
                     response['data']['message'] = 'Email sent'
                     response['status_code'] = 200
                 except smtplib.SMTPException:
-                    # Improvement: Implement logging to app's admin
+                    # Improvement: Implement logging to admins
                     response['data']['error'] = "Didn't send the email. Try again"
                     response['status_code'] = 404
 
@@ -61,5 +64,36 @@ class AuthView(ViewSet):
         response = CustomUtil().response
         description = 'Log in with access token previously sent by email'
         response['request_detail']['description'] = description
+        email = request.data.get('email')
+        access_token = request.data.get('access_token')
+
+        if not email or not access_token:
+            response['data']['error'] = 'Email and token are required'
+        else:
+            # Verify received token, revoke and create new one
+            try:
+                user = UserModel.objects.get(email=email)
+                datetime_now = timezone.now()
+                AccessToken.objects.get(
+                    user_id=user.id,
+                    token=access_token,
+                    expires__gt=datetime_now,
+                )
+                # Discard all tokens requested by user before this successfully log in
+                # Get new tokens
+                password = UserModel.objects.make_random_password()
+                user.update_password(password)
+                tokens = UserModel.get_tokens(email, password)
+                # Update last login
+                update_last_login(None, user)
+                response['data']['message'] = 'Access granted'
+                response['data']['tokens'] = tokens
+                response['status_code'] = 200
+            except UserModel.DoesNotExist:
+                response['data']['error'] = 'Not authorized'
+                response['status_code'] = 401
+            except AccessToken.DoesNotExist:
+                response['data']['error'] = 'Not authorized'
+                response['status_code'] = 401
 
         return Response(response, status=response['status_code'])

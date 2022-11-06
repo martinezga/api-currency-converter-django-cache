@@ -200,8 +200,8 @@ OAUTH2_PROVIDER = {
     # Default value is 36000 seg = 10 hrs
     # 'ACCESS_TOKEN_EXPIRE_SECONDS': 36000,
 }
-
-TOKEN_EXPIRATION = '10 hours'
+# Expressed in hours
+TOKEN_EXPIRATION = 10
 
 # -- Sendmail Configuration
 EMAIL_BACKEND = config('EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
