@@ -19,6 +19,9 @@ class AuthView(ViewSet):
 
     @action(detail=False, methods=['post'])
     def access(self, request):
+        """
+        Input: {"email": "my_email@email.com"}
+        """
         custom_util = CustomUtil()
         response = custom_util.response
         description = 'Send access token to email informed. Previous registration not required'
@@ -93,6 +96,52 @@ class AuthView(ViewSet):
                 response['data']['error'] = 'Not authorized'
                 response['status_code'] = 401
             except AccessToken.DoesNotExist:
+                response['data']['error'] = 'Not authorized'
+                response['status_code'] = 401
+
+        return Response(response, status=response['status_code'])
+
+    @action(detail=False, methods=['post'], url_path='password/provisional')
+    def provisional_password(self, request):
+        """
+        Send provisional password to an admin.
+        Password is required to access django admin and modify OAuth settings
+        Input: {"email": "my_email@email.com"}
+        """
+        custom_util = CustomUtil()
+        response = custom_util.response
+        description = 'Send provisional password to email informed.'
+        response['request_detail']['description'] = description
+        email = request.data.get('email')
+        user = None
+
+        if not email:
+            response['data']['error'] = 'Email address is required'
+        else:
+            try:
+                user = UserModel.objects.get(email=email)
+            except UserModel.DoesNotExist:
+                response['data']['error'] = 'Not authorized'
+                response['status_code'] = 401
+            # Verify user exist and is admin
+            if user and user.is_superuser:
+                password = UserModel.objects.make_random_password()
+                user.update_password(password)
+                # Send provisional password by email
+                try:
+                    custom_util.send_custom_email(
+                        subject='Provisional password',
+                        body_type='provisional_password',
+                        password=password,
+                        email=email,
+                    )
+                    response['data']['message'] = 'Email sent'
+                    response['status_code'] = 200
+                except smtplib.SMTPException:
+                    # Improvement: Implement logging to admins
+                    response['data']['error'] = "Didn't send the email. Try again"
+                    response['status_code'] = 404
+            else:
                 response['data']['error'] = 'Not authorized'
                 response['status_code'] = 401
 
