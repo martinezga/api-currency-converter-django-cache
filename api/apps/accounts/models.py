@@ -7,7 +7,10 @@ from apps.accounts.manager import UserManager
 
 
 class User(AbstractUser):
-    """Email and password are required. Other fields are optional."""
+    """
+    Email, username and password are required for admins. Other fields are optional.
+    Email and password are required for non admins. Other fields are optional.
+    """
     email = models.EmailField(
         max_length=120, verbose_name='Email', unique=True)
 

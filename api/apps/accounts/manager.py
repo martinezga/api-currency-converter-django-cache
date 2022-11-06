@@ -12,13 +12,13 @@ class UserManager(BaseUserManager):
         user.save()
         return user
 
-    def create_superuser(self, email, password):
+    def create_superuser(self, email, username, password):
         user = self.model(
             email=self.normalize_email(email),
+            username=username,
             is_superuser=True,
             is_staff=True
         )
-        password = self.make_random_password()
         user.set_password(password)
         user.save()
         return user
