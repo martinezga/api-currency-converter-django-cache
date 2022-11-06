@@ -53,6 +53,7 @@ THIRD_PARTY_APPS = [
 
 OWNER_APPS = [
     'apps.home',
+    'apps.accounts',
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + OWNER_APPS
@@ -122,6 +123,10 @@ if config('DATABASE_URI', default=''):
     DATABASES['default']['PASSWORD'] = url_parsed.password
     DATABASES['default']['HOST'] = url_parsed.hostname
     DATABASES['default']['PORT'] = url_parsed.port
+
+# -- User model custom
+# https://docs.djangoproject.com/en/3.2/topics/auth/customizing/#using-a-custom-user-model-when-starting-a-project
+AUTH_USER_MODEL = 'accounts.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
