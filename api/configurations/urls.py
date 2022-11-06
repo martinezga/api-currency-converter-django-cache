@@ -19,6 +19,11 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('apps.home.urls', 'home'), namespace='home')),
+    # OAuth urls
+    path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    # Auth
+    path('auth/', include(('apps.accounts.urls', 'accounts'), namespace="accounts")),
+    # API version 1
     path('v1/', include([
         # Apps urls
     ])),

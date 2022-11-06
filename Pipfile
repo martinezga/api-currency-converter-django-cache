@@ -8,6 +8,7 @@ django = "==3.2.16"
 djangorestframework = "*"
 python-decouple = "*"
 django-cors-headers = "*"
+django-oauth-toolkit = "*"
 
 [dev-packages]
 psycopg2-binary = "*"
