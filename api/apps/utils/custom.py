@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.utils import timezone
 
@@ -44,10 +44,11 @@ class CustomUtil:
                     'password': password,
                 })
         # If occur an error throw 'smtplib.SMTPException'
-        send_mail(
-            subject,
-            message,
-            settings.DEFAULT_FROM_EMAIL,
-            [to_email, ],
-            fail_silently=False,
-        )
+        email = EmailMessage(subject=subject,
+                             body=message,
+                             to=[to_email],
+                             from_email=settings.DEFAULT_FROM_EMAIL,
+                             )
+        email.fail_silently = False
+        email.content_subtype = 'html'
+        email.send()
