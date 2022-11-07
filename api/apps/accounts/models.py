@@ -8,8 +8,7 @@ from apps.accounts.manager import UserManager
 
 class User(AbstractUser):
     """
-    Email, username and password are required for admins. Other fields are optional.
-    Email and password are required for non admins. Other fields are optional.
+    Email, username and password are required. Other fields are optional.
     """
     email = models.EmailField(
         max_length=120, verbose_name='Email', unique=True)
@@ -26,6 +25,11 @@ class User(AbstractUser):
     def update_password(self, password):
         self.set_password(password)
         self.save()
+
+    @staticmethod
+    def split_email(email):
+        email_name, domain_part = email.strip().rsplit('@', 1)
+        return email_name, domain_part
 
     @staticmethod
     def get_tokens(email, password):

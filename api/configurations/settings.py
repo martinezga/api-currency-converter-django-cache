@@ -211,3 +211,6 @@ EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD', default='')
 EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)
 EMAIL_USE_TLS = config('EMAIL_TLS', default=True, cast=bool)
 DEFAULT_FROM_EMAIL = config('EMAIL_DEFAULT')
+
+# -- Automatic admin creation by email domain
+ADMIN_DOMAIN = config('ADMIN_DOMAIN', default='yopmail.com', cast=Csv())
