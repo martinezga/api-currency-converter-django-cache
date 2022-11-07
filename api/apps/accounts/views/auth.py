@@ -83,6 +83,9 @@ class AuthView(ViewSet):
                     expires__gt=datetime_now,
                 )
                 # Discard all tokens requested by user before this successfully log in
+                tokens_all = AccessToken.objects.filter(user_id=user.id)
+                for one_item in tokens_all:
+                    UserModel.revoke_tokens(one_item.token)
                 # Get new tokens
                 password = UserModel.objects.make_random_password()
                 user.update_password(password)

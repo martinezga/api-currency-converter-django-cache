@@ -46,3 +46,18 @@ class User(AbstractUser):
         )
 
         return r.json()
+
+    @staticmethod
+    def revoke_tokens(access_token):
+        """
+        Method to revoke tokens.
+        {"token": "<token>"}
+        """
+        _ = requests.post(
+            f'{config("AUTH_URL")}/o/revoke_token/',
+            data={
+                'token': access_token,
+                'client_id': config('CLIENT_ID'),
+                'client_secret': config('CLIENT_SECRET'),
+            },
+        )

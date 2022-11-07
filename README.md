@@ -8,6 +8,9 @@ Develop a currency converter API.
 
 https://api-currency-converter.onrender.com
 
+**Note**: Web Services on the free plan are automatically spun down after 15 minutes of inactivity. When a new request for a free service comes in, **Render** spins it up again so it can process the request.
+This can cause a _response delay of up to 30 seconds_ for the first request that comes in after a period of inactivity.
+
 ---
 
 ### 🔧 Technologies used
@@ -20,13 +23,24 @@ https://api-currency-converter.onrender.com
 * Render - Cloud Application Hosting
 
 ### 📖 Description
-
+- Passwordless authentication
 
 ### 🔎 Improvements
-
+- Logging
 
 ### 🏁 API Usage
 
+The API don't need registration by user, it uses `Passwordless authentication` workflow.
+
+That means you don't have and don't need to remember your password because we will send you and email with a token everytime you need to access our application.
+
+In that way we ensure you use a valid email 😀 and simplify the sign-in experience.
+
+Automatically creates users and according given domain creates admins privileges.
+
+For testing purposes accounts with emails ending on `yopmail.com` are admin.
+
+To create an admin account go to: https://yopmail.com/ this service allow to have a disposable email address with inbox to receive real emails.
 
 ### ✨ Local environment set up
 
@@ -67,7 +81,7 @@ In case you don't have pipenv, execute: `pip install pipenv` first.
 - To stop it execute:
 
         $ docker-compose stop
-- 
+
 **To test successfully set up visit: http://localhost:8000**
 
 ### ☁️ Production environment
@@ -76,13 +90,7 @@ Set up with Gunicorn, psycopg2 and Docker deploy. Use the [Dockerfile](Dockerfil
 
 To use [render](https://render.com/) connect your GitHub repository and allow automatic deploy by push.
 
-In server needs to configure the follow environment variables (minimal ones):
-
-- ENV
-- DATABASE_URI
-- CACHE_REDIS_URL
-
-Full environment variables list is available on [_.env](_.env) file.
+In server needs to configure this list of environment variables [_.env](_.env).
 
 **Keep an eye on PORT value** It is required to deploy the app, Heroku and Render assign it automatically.
 
