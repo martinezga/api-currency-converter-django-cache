@@ -13,7 +13,7 @@ class TestCurrencyViews:
 
     def test_list(self, api_client):
         obj_expected = 5
-        CurrencyFactory.build_batch(obj_expected)
+        CurrencyFactory.create_batch(obj_expected)
 
         response = api_client().get(
             self.endpoint,
