@@ -26,5 +26,6 @@ urlpatterns = [
     # API version 1
     path('v1/', include([
         # Apps urls
+        path('', include(('apps.currencies.urls', 'currencies'), namespace="currencies")),
     ])),
 ]

@@ -1,12 +1,15 @@
 import datetime
 
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope, TokenHasScope
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
 
 
 class HomeView(ViewSet):
-    permission_classes = [AllowAny]
+    # permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated, TokenHasScope]
+    required_scopes = ['groups']
 
     def list(self, request):
         """API home"""
