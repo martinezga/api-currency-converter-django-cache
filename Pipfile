@@ -9,6 +9,13 @@ djangorestframework = "*"
 python-decouple = "*"
 django-cors-headers = "*"
 django-oauth-toolkit = "*"
+django-extensions = "*"
+pytest = "*"
+pytest-django = "*"
+factory-boy = "*"
+pytest-cov = "*"
+pytest-xdist = "*"
+pytest-factoryboy = "*"
 
 [dev-packages]
 psycopg2-binary = "*"
@@ -26,6 +33,7 @@ collectstatic   = "python api/manage.py collectstatic"
 shell           = "python api/manage.py shell"
 dumpdata        = "python api/manage.py dumpdata"
 loaddata        = "python api/manage.py loaddata"
+pytestcov       = "pytest --cov --cov-config=pytest.ini"
 
 [requires]
 python_version = "3.8"
