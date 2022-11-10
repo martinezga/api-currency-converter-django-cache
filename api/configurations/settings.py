@@ -56,6 +56,7 @@ OWNER_APPS = [
     'apps.home',
     'apps.accounts',
     'apps.currencies',
+    'apps.exchanges',
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + OWNER_APPS

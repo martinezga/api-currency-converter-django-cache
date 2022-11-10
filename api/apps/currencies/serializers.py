@@ -54,10 +54,11 @@ class CurrencyCreateSerializer(serializers.ModelSerializer):
         creator = validated_data.get('creator')
 
         for currency in currencies:
-            CurrencyModel.objects.create(
+            currency = CurrencyModel.objects.create(
                 code=currency[0],
                 name=currency[1],
                 creator_id=creator.id
             )
+            currency.create_currency_rate()
 
         return currencies
