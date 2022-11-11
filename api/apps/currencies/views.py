@@ -30,8 +30,8 @@ class CurrencyView(ViewSet):
 
         response['status_code'] = 200
         response['data'].pop('message')
-        response['data']['active_currencies'] = serializer.data
         response['data']['currencies_count'] = len(serializer.data)
+        response['data']['active_currencies'] = serializer.data
 
         return Response(response, status=response['status_code'])
 
@@ -46,18 +46,18 @@ class CurrencyView(ViewSet):
         exchange_api = GetExchange()
         currencies_available_all = exchange_api.get_currencies()
         if currencies_available_all:
-            # Get list of our active currencies (already implemented)
-            currencies_active = CurrencyModel.objects.all()
+            # Get list of implemented currencies (including enabled and disabled)
+            currencies_all = CurrencyModel.objects.all()
 
-            if currencies_active:
+            if currencies_all:
                 # Get a list of dict keys
                 currencies_available_all_code = currencies_available_all.keys()
-                currencies_active_code = [x.code for x in currencies_active]
+                currencies_all_code = [x.code for x in currencies_all]
 
                 # Compare between structures
                 for currency_available_code in currencies_available_all_code:
                     # save not implemented ones
-                    if currency_available_code not in currencies_active_code:
+                    if currency_available_code not in currencies_all_code:
                         currency_name = currencies_available_all.get(currency_available_code)
                         currencies_to_implement[currency_available_code] = currency_name
             else:
