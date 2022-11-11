@@ -18,17 +18,30 @@ This can cause a _response delay of up to 30 seconds_ for the first request that
 * Python 3.8.12
 * Django
 * PostgreSQL
+* pytest y pytest-django
 * Redis
 * Docker
 * Render - Cloud Application Hosting
+* openexchangerates.org API
 
 ### 📖 Description
+
+- Custom User Model
 - Passwordless authentication
 
 ### 🔎 Improvements
+
+- Create a cron job to update exchange rates daily
 - Logging
+- More test
+- Complete endpoints (see Postman collection)
+- Filtering and searching
 
 ### 🏁 API Usage
+
+Added a [Postman collection](api-currency-converter-drf-cache.postman_collection.json) to easily use API endpoints and query parameters combinations.
+
+Also contains examples of expected responses.
 
 The API don't need registration by user, it uses `Passwordless authentication` workflow.
 
@@ -41,6 +54,127 @@ Automatically creates users and according given domain creates admins privileges
 For testing purposes accounts with emails ending on `yopmail.com` are admin.
 
 To create an admin account go to: https://yopmail.com/ this service allow to have a disposable email address with inbox to receive real emails.
+
+### Endpoint: /home/
+#### HTTP Method: GET
+
+Show API status.
+
+### Endpoint: /auth/access/
+#### HTTP Method: POST
+
+Send access token to email informed. Previous registration not required.
+
+Required json body:
+  ```json
+  {
+      "email": "johndoe4444@email.com"
+  }
+  ```
+
+Admin creation:
+  ```json
+  {
+      "email": "superadmin@yopmail.com"
+  }
+  ```
+
+### Endpoint: /auth/login/
+#### HTTP Method: POST
+
+Log in with access token previously sent by email.
+**It could be optional. Depends on frontend workflow.**
+
+Required json body:
+  ```json
+  {
+      "email": "johndoe4444@email.com",
+      "access_token": "sdfdf565sdf165d1gasd651f"
+  }
+  ```
+
+### Endpoint: /auth/password/provisional/
+#### HTTP Method: POST
+#### Required admin email
+
+Send provisional password to email informed. Password is required to access on Django Admin.
+
+Required json body:
+  ```json
+  {
+      "email": "johndoe4444@email.com"
+  }
+  ```
+
+### Endpoint: /v1/currencies/to_implement/
+#### HTTP Method: GET
+
+List currencies available to add it as active.
+
+### Endpoint: /v1/currencies/
+#### HTTP Method: POST
+#### Require authentication
+
+Add new currencies to allow its use on our API
+
+Required json body:
+  ```json
+  {
+      "currencies": ["BRL", "CAD", "EUR"]
+  }
+  ```
+
+### Endpoint: /v1/currencies/
+#### HTTP Method: GET
+
+List all active and allowed currencies
+
+### Endpoint: /v1/rates/
+#### HTTP Method: GET
+
+List all available exchange rates
+
+### Endpoint: /v1/convert/{amount}/{currency_code}/
+#### HTTP Method: GET
+
+Convert the amount of the currency specified into all the currencies available
+
+currency_code = BRL
+
+Other currencies not implemented yet.
+
+Examples:
+ ```
+    /v1/convert/589/BRL/
+    /v1/convert/5.3753/BRL/
+ ```
+
+### Endpoints to be implemented:
+
+- filter currencies not allowed to convert
+
+      /v1/currencies/?status=disabled/
+
+- enable by CODE
+
+      /v1/currencies/AMD/enable/
+
+- disable by CODE
+
+      /v1/currencies/AMD/disable/
+
+- get single currency info by CODE
+
+      /v1/currencies/AMD/
+
+- filter all avialable rates changing base
+
+      /v1/rates/?base=EUR&symbols=ARS,BRL,USD
+
+- convert any currency to any allowed currency
+
+      /v1/convert/589/BRL/EUR
+
 
 ### ✨ Local environment set up
 

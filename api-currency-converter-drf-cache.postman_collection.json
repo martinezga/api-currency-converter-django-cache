@@ -1,0 +1,1501 @@
+{
+	"info": {
+		"_postman_id": "2e4b6d29-16df-49f9-85e3-082dbf23a1cb",
+		"name": "api-currency-converter-drf-cache",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10616243"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "admin",
+					"item": [
+						{
+							"name": "provisional password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"{{admin_email}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/auth/password/provisional/",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"auth",
+										"password",
+										"provisional",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "provisional password",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"{{admin_email}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url_base}}/auth/password/provisional/",
+											"host": [
+												"{{url_base}}"
+											],
+											"path": [
+												"auth",
+												"password",
+												"provisional",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Fri, 11 Nov 2022 17:47:11 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "7688d9f5e8b90104-GRU"
+										},
+										{
+											"key": "Allow",
+											"value": "POST, OPTIONS"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "referrer-policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "x-content-type-options",
+											"value": "nosniff"
+										},
+										{
+											"key": "x-frame-options",
+											"value": "DENY"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"request_detail\": {\n        \"description\": \"Send provisional password to email informed.\",\n        \"request_date_utc\": \"2022-11-11T17:47:09.234001Z\"\n    },\n    \"data\": {\n        \"message\": \"Email sent\"\n    },\n    \"status_code\": 200\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "get access",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{admin_email}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}/auth/access/",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"auth",
+								"access",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "access user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"{{user_email}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/auth/access/",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"auth",
+										"access",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 06 Nov 2022 19:33:07 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "206"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization, Origin"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"request_detail\": {\n        \"description\": \"Send access token to email informed. Previous registration not required\",\n        \"request_date_utc\": \"2022-11-06T19:33:07.441755\"\n    },\n    \"data\": {\n        \"message\": \"Email sent\"\n    },\n    \"status_code\": 200\n}"
+						},
+						{
+							"name": "error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"{{user_email}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/auth/access/",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"auth",
+										"access",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 06 Nov 2022 19:42:29 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "256"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization, Origin"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"request_detail\": {\n        \"description\": \"Send access token to email informed. Previous registration not required\",\n        \"request_date_utc\": \"2022-11-06T19:42:26.886530\"\n    },\n    \"data\": {\n        \"message\": \"An error occurred\",\n        \"error\": \"Didn't send the email. Try again\"\n    },\n    \"status_code\": 404\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.code == 200) {",
+									"var data = pm.response.json()",
+									"    pm.environment.set('access_token', data.data.tokens.access_token);",
+									"    pm.environment.set('refresh_token', data.data.tokens.refresh_token);",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{admin_email}}\",\n    \"access_token\": \"{{access_token}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}/auth/login/",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"{{admin_email}}\",\n    \"access_token\": \"sdfsdf\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/auth/login/",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"auth",
+										"login",
+										""
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 06 Nov 2022 20:03:50 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "216"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization, Origin"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"request_detail\": {\n        \"description\": \"Log in with access token previously sent by email\",\n        \"request_date_utc\": \"2022-11-06T20:03:37.183774\"\n    },\n    \"data\": {\n        \"message\": \"An error occurred\",\n        \"error\": \"Not authorized\"\n    },\n    \"status_code\": 401\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"{{user_email}}\",\n    \"access_token\": \"lUaC1axaVyT0e7Uyh5xXm7JQbVwUlQ\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/auth/login/",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"auth",
+										"login",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 06 Nov 2022 20:54:12 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "366"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization, Origin"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"request_detail\": {\n        \"description\": \"Log in with access token previously sent by email\",\n        \"request_date_utc\": \"2022-11-06T20:54:08.783164Z\"\n    },\n    \"data\": {\n        \"message\": \"Access granted\",\n        \"tokens\": {\n            \"access_token\": \"0ucDFyEVEvBoOdrDo73Zq379egBxoc\",\n            \"expires_in\": 36000,\n            \"token_type\": \"Bearer\",\n            \"scope\": \"read write groups\",\n            \"refresh_token\": \"qp8dbswaTrbXcV5978aM1vBTtUpUG5\"\n        }\n    },\n    \"status_code\": 200\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "currencies",
+			"item": [
+				{
+					"name": "admin",
+					"item": [
+						{
+							"name": "Add new currencies",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"currencies\": [\"BRL\", \"CAD\", \"EUR\", \"USD\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/v1/currencies/",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"v1",
+										"currencies",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Add new currencies",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"currencies\": [\"AWG\", \"CUP\"]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url_base}}/v1/currencies/",
+											"host": [
+												"{{url_base}}"
+											],
+											"path": [
+												"v1",
+												"currencies",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Fri, 11 Nov 2022 15:56:10 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.8.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "179"
+										},
+										{
+											"key": "Vary",
+											"value": "Authorization, Origin"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"request_detail\": {\n        \"description\": \"Add new currencies to allow its use on our API\",\n        \"request_date_utc\": \"2022-11-11T15:56:10.719384Z\"\n    },\n    \"data\": {\n        \"message\": \"Created\"\n    },\n    \"status_code\": 200\n}"
+								}
+							]
+						},
+						{
+							"name": "not implemented: filter currencies not allowed to convert",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/v1/currencies/?status=disabled/",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"v1",
+										"currencies",
+										""
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "disabled/"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "not implemented: enable by CODE",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/v1/currencies/AMD/enable/",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"v1",
+										"currencies",
+										"AMD",
+										"enable",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "not implemented: disable by CODE",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/v1/currencies/AMD/disable/",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"v1",
+										"currencies",
+										"AMD",
+										"disable",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{access_token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "public",
+					"item": [
+						{
+							"name": "list all active currencies",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/v1/currencies/",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"v1",
+										"currencies",
+										""
+									]
+								},
+								"description": "\"requestInformation\":{\"name\":\"payment transaction currencies\",\"description\":\"A list of mastercard active currencies\",\"requestDate\":\"2022-11-04 23:16:38 GMT\"},\"data\":"
+							},
+							"response": [
+								{
+									"name": "empty -> list all active currencies",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url_base}}/v1/currencies/",
+											"host": [
+												"{{url_base}}"
+											],
+											"path": [
+												"v1",
+												"currencies",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Fri, 11 Nov 2022 17:39:18 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "7688ce74aeb90104-GRU"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "referrer-policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "x-content-type-options",
+											"value": "nosniff"
+										},
+										{
+											"key": "x-frame-options",
+											"value": "DENY"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"request_detail\": {\n        \"description\": \"List all active and allowed currencies\",\n        \"request_date_utc\": \"2022-11-11T17:39:18.426306Z\"\n    },\n    \"data\": {\n        \"currencies_count\": 0,\n        \"active_currencies\": []\n    },\n    \"status_code\": 200\n}"
+								},
+								{
+									"name": "w/info -> list all active currencies",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url_base}}/v1/currencies/",
+											"host": [
+												"{{url_base}}"
+											],
+											"path": [
+												"v1",
+												"currencies",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Fri, 11 Nov 2022 17:43:48 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "7688d50d89e00104-GRU"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "referrer-policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "x-content-type-options",
+											"value": "nosniff"
+										},
+										{
+											"key": "x-frame-options",
+											"value": "DENY"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"request_detail\": {\n        \"description\": \"List all active and allowed currencies\",\n        \"request_date_utc\": \"2022-11-11T17:43:48.218635Z\"\n    },\n    \"data\": {\n        \"currencies_count\": 3,\n        \"active_currencies\": [\n            {\n                \"id\": 1,\n                \"creator\": \"migeddalleika-7912@yopmail.com\",\n                \"modifier\": null,\n                \"created\": \"2022-11-11T17:43:43.561171Z\",\n                \"modified\": \"2022-11-11T17:43:43.561216Z\",\n                \"code\": \"BRL\",\n                \"name\": \"Brazilian Real\",\n                \"is_enabled\": true\n            },\n            {\n                \"id\": 2,\n                \"creator\": \"migeddalleika-7912@yopmail.com\",\n                \"modifier\": null,\n                \"created\": \"2022-11-11T17:43:43.936462Z\",\n                \"modified\": \"2022-11-11T17:43:43.936502Z\",\n                \"code\": \"CAD\",\n                \"name\": \"Canadian Dollar\",\n                \"is_enabled\": true\n            },\n            {\n                \"id\": 3,\n                \"creator\": \"migeddalleika-7912@yopmail.com\",\n                \"modifier\": null,\n                \"created\": \"2022-11-11T17:43:43.980161Z\",\n                \"modified\": \"2022-11-11T17:43:43.980191Z\",\n                \"code\": \"EUR\",\n                \"name\": \"Euro\",\n                \"is_enabled\": true\n            }\n        ]\n    },\n    \"status_code\": 200\n}"
+								}
+							]
+						},
+						{
+							"name": "filter currencies available to implement",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/v1/currencies/to_implement/",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"v1",
+										"currencies",
+										"to_implement",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "filter currencies available to implement",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url_base}}/v1/currencies/to_implement/",
+											"host": [
+												"{{url_base}}"
+											],
+											"path": [
+												"v1",
+												"currencies",
+												"to_implement",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Fri, 11 Nov 2022 17:39:27 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "7688ceacc9680104-GRU"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, HEAD, OPTIONS"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "referrer-policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "x-content-type-options",
+											"value": "nosniff"
+										},
+										{
+											"key": "x-frame-options",
+											"value": "DENY"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"request_detail\": {\n        \"description\": \"List currencies available to add it as active\",\n        \"request_date_utc\": \"2022-11-11T17:39:27.443032Z\"\n    },\n    \"data\": {\n        \"currencies_count\": 192,\n        \"currencies_available_all\": {\n            \"AED\": \"United Arab Emirates Dirham\",\n            \"AFN\": \"Afghan Afghani\",\n            \"ALL\": \"Albanian Lek\",\n            \"AMD\": \"Armenian Dram\",\n            \"ANG\": \"Netherlands Antillean Guilder\",\n            \"AOA\": \"Angolan Kwanza\",\n            \"ARS\": \"Argentine Peso\",\n            \"AUD\": \"Australian Dollar\",\n            \"AWG\": \"Aruban Florin\",\n            \"AZN\": \"Azerbaijani Manat\",\n            \"BAM\": \"Bosnia-Herzegovina Convertible Mark\",\n            \"BBD\": \"Barbadian Dollar\",\n            \"BDT\": \"Bangladeshi Taka\",\n            \"BGN\": \"Bulgarian Lev\",\n            \"BHD\": \"Bahraini Dinar\",\n            \"BIF\": \"Burundian Franc\",\n            \"BMD\": \"Bermudan Dollar\",\n            \"BND\": \"Brunei Dollar\",\n            \"BOB\": \"Bolivian Boliviano\",\n            \"BRL\": \"Brazilian Real\",\n            \"BSD\": \"Bahamian Dollar\",\n            \"BTC\": \"Bitcoin\",\n            \"BTN\": \"Bhutanese Ngultrum\",\n            \"BTS\": \"BitShares\",\n            \"BWP\": \"Botswanan Pula\",\n            \"BYN\": \"Belarusian Ruble\",\n            \"BZD\": \"Belize Dollar\",\n            \"CAD\": \"Canadian Dollar\",\n            \"CDF\": \"Congolese Franc\",\n            \"CHF\": \"Swiss Franc\",\n            \"CLF\": \"Chilean Unit of Account (UF)\",\n            \"CLP\": \"Chilean Peso\",\n            \"CNH\": \"Chinese Yuan (Offshore)\",\n            \"CNY\": \"Chinese Yuan\",\n            \"COP\": \"Colombian Peso\",\n            \"CRC\": \"Costa Rican Colón\",\n            \"CUC\": \"Cuban Convertible Peso\",\n            \"CUP\": \"Cuban Peso\",\n            \"CVE\": \"Cape Verdean Escudo\",\n            \"CZK\": \"Czech Republic Koruna\",\n            \"DASH\": \"Dash\",\n            \"DJF\": \"Djiboutian Franc\",\n            \"DKK\": \"Danish Krone\",\n            \"DOGE\": \"DogeCoin\",\n            \"DOP\": \"Dominican Peso\",\n            \"DZD\": \"Algerian Dinar\",\n            \"EAC\": \"EarthCoin\",\n            \"EGP\": \"Egyptian Pound\",\n            \"EMC\": \"Emercoin\",\n            \"ERN\": \"Eritrean Nakfa\",\n            \"ETB\": \"Ethiopian Birr\",\n            \"ETH\": \"Ethereum\",\n            \"EUR\": \"Euro\",\n            \"FCT\": \"Factom\",\n            \"FJD\": \"Fijian Dollar\",\n            \"FKP\": \"Falkland Islands Pound\",\n            \"FTC\": \"Feathercoin\",\n            \"GBP\": \"British Pound Sterling\",\n            \"GEL\": \"Georgian Lari\",\n            \"GGP\": \"Guernsey Pound\",\n            \"GHS\": \"Ghanaian Cedi\",\n            \"GIP\": \"Gibraltar Pound\",\n            \"GMD\": \"Gambian Dalasi\",\n            \"GNF\": \"Guinean Franc\",\n            \"GTQ\": \"Guatemalan Quetzal\",\n            \"GYD\": \"Guyanaese Dollar\",\n            \"HKD\": \"Hong Kong Dollar\",\n            \"HNL\": \"Honduran Lempira\",\n            \"HRK\": \"Croatian Kuna\",\n            \"HTG\": \"Haitian Gourde\",\n            \"HUF\": \"Hungarian Forint\",\n            \"IDR\": \"Indonesian Rupiah\",\n            \"ILS\": \"Israeli New Sheqel\",\n            \"IMP\": \"Manx pound\",\n            \"INR\": \"Indian Rupee\",\n            \"IQD\": \"Iraqi Dinar\",\n            \"IRR\": \"Iranian Rial\",\n            \"ISK\": \"Icelandic Króna\",\n            \"JEP\": \"Jersey Pound\",\n            \"JMD\": \"Jamaican Dollar\",\n            \"JOD\": \"Jordanian Dinar\",\n            \"JPY\": \"Japanese Yen\",\n            \"KES\": \"Kenyan Shilling\",\n            \"KGS\": \"Kyrgystani Som\",\n            \"KHR\": \"Cambodian Riel\",\n            \"KMF\": \"Comorian Franc\",\n            \"KPW\": \"North Korean Won\",\n            \"KRW\": \"South Korean Won\",\n            \"KWD\": \"Kuwaiti Dinar\",\n            \"KYD\": \"Cayman Islands Dollar\",\n            \"KZT\": \"Kazakhstani Tenge\",\n            \"LAK\": \"Laotian Kip\",\n            \"LBP\": \"Lebanese Pound\",\n            \"LD\": \"Linden Dollar\",\n            \"LKR\": \"Sri Lankan Rupee\",\n            \"LRD\": \"Liberian Dollar\",\n            \"LSL\": \"Lesotho Loti\",\n            \"LTC\": \"LiteCoin\",\n            \"LYD\": \"Libyan Dinar\",\n            \"MAD\": \"Moroccan Dirham\",\n            \"MDL\": \"Moldovan Leu\",\n            \"MGA\": \"Malagasy Ariary\",\n            \"MKD\": \"Macedonian Denar\",\n            \"MMK\": \"Myanma Kyat\",\n            \"MNT\": \"Mongolian Tugrik\",\n            \"MOP\": \"Macanese Pataca\",\n            \"MRU\": \"Mauritanian Ouguiya\",\n            \"MUR\": \"Mauritian Rupee\",\n            \"MVR\": \"Maldivian Rufiyaa\",\n            \"MWK\": \"Malawian Kwacha\",\n            \"MXN\": \"Mexican Peso\",\n            \"MYR\": \"Malaysian Ringgit\",\n            \"MZN\": \"Mozambican Metical\",\n            \"NAD\": \"Namibian Dollar\",\n            \"NGN\": \"Nigerian Naira\",\n            \"NIO\": \"Nicaraguan Córdoba\",\n            \"NMC\": \"Namecoin\",\n            \"NOK\": \"Norwegian Krone\",\n            \"NPR\": \"Nepalese Rupee\",\n            \"NVC\": \"NovaCoin\",\n            \"NXT\": \"Nxt\",\n            \"NZD\": \"New Zealand Dollar\",\n            \"OMR\": \"Omani Rial\",\n            \"PAB\": \"Panamanian Balboa\",\n            \"PEN\": \"Peruvian Nuevo Sol\",\n            \"PGK\": \"Papua New Guinean Kina\",\n            \"PHP\": \"Philippine Peso\",\n            \"PKR\": \"Pakistani Rupee\",\n            \"PLN\": \"Polish Zloty\",\n            \"PPC\": \"Peercoin\",\n            \"PYG\": \"Paraguayan Guarani\",\n            \"QAR\": \"Qatari Rial\",\n            \"RON\": \"Romanian Leu\",\n            \"RSD\": \"Serbian Dinar\",\n            \"RUB\": \"Russian Ruble\",\n            \"RWF\": \"Rwandan Franc\",\n            \"SAR\": \"Saudi Riyal\",\n            \"SBD\": \"Solomon Islands Dollar\",\n            \"SCR\": \"Seychellois Rupee\",\n            \"SDG\": \"Sudanese Pound\",\n            \"SEK\": \"Swedish Krona\",\n            \"SGD\": \"Singapore Dollar\",\n            \"SHP\": \"Saint Helena Pound\",\n            \"SLL\": \"Sierra Leonean Leone\",\n            \"SOS\": \"Somali Shilling\",\n            \"SRD\": \"Surinamese Dollar\",\n            \"SSP\": \"South Sudanese Pound\",\n            \"STD\": \"São Tomé and Príncipe Dobra (pre-2018)\",\n            \"STN\": \"São Tomé and Príncipe Dobra\",\n            \"STR\": \"Stellar\",\n            \"SVC\": \"Salvadoran Colón\",\n            \"SYP\": \"Syrian Pound\",\n            \"SZL\": \"Swazi Lilangeni\",\n            \"THB\": \"Thai Baht\",\n            \"TJS\": \"Tajikistani Somoni\",\n            \"TMT\": \"Turkmenistani Manat\",\n            \"TND\": \"Tunisian Dinar\",\n            \"TOP\": \"Tongan Pa'anga\",\n            \"TRY\": \"Turkish Lira\",\n            \"TTD\": \"Trinidad and Tobago Dollar\",\n            \"TWD\": \"New Taiwan Dollar\",\n            \"TZS\": \"Tanzanian Shilling\",\n            \"UAH\": \"Ukrainian Hryvnia\",\n            \"UGX\": \"Ugandan Shilling\",\n            \"USD\": \"United States Dollar\",\n            \"UYU\": \"Uruguayan Peso\",\n            \"UZS\": \"Uzbekistan Som\",\n            \"VEF\": \"Venezuelan Bolívar Fuerte (Old)\",\n            \"VEF_BLKMKT\": \"Venezuelan Bolívar (Black Market)\",\n            \"VEF_DICOM\": \"Venezuelan Bolívar (DICOM)\",\n            \"VEF_DIPRO\": \"Venezuelan Bolívar (DIPRO)\",\n            \"VES\": \"Venezuelan Bolívar Soberano\",\n            \"VND\": \"Vietnamese Dong\",\n            \"VTC\": \"VertCoin\",\n            \"VUV\": \"Vanuatu Vatu\",\n            \"WST\": \"Samoan Tala\",\n            \"XAF\": \"CFA Franc BEAC\",\n            \"XAG\": \"Silver Ounce\",\n            \"XAU\": \"Gold Ounce\",\n            \"XCD\": \"East Caribbean Dollar\",\n            \"XDR\": \"Special Drawing Rights\",\n            \"XMR\": \"Monero\",\n            \"XOF\": \"CFA Franc BCEAO\",\n            \"XPD\": \"Palladium Ounce\",\n            \"XPF\": \"CFP Franc\",\n            \"XPM\": \"Primecoin\",\n            \"XPT\": \"Platinum Ounce\",\n            \"XRP\": \"Ripple\",\n            \"YER\": \"Yemeni Rial\",\n            \"ZAR\": \"South African Rand\",\n            \"ZMW\": \"Zambian Kwacha\",\n            \"ZWL\": \"Zimbabwean Dollar\"\n        }\n    },\n    \"status_code\": 200\n}"
+								}
+							]
+						},
+						{
+							"name": "not implemented:  get single currency by CODE",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/v1/currencies/AMD/",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"v1",
+										"currencies",
+										"AMD",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "rates",
+			"item": [
+				{
+					"name": "list all avialable rates",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/v1/rates/",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"v1",
+								"rates",
+								""
+							],
+							"query": [
+								{
+									"key": "base",
+									"value": "USD",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "list all avialable rates",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/v1/rates/",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"v1",
+										"rates",
+										""
+									],
+									"query": [
+										{
+											"key": "base",
+											"value": "USD",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 11 Nov 2022 17:44:47 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "7688d679a92a0104-GRU"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"request_detail\": {\n        \"description\": \"List all available exchange rates\",\n        \"request_date_utc\": \"2022-11-11T17:44:46.964005Z\"\n    },\n    \"data\": {\n        \"currencies_count\": 3,\n        \"currency_rates\": [\n            {\n                \"id\": 1,\n                \"code\": \"BRL\",\n                \"creator\": \"migeddalleika-7912@yopmail.com\",\n                \"modifier\": null,\n                \"created\": \"2022-11-11T17:43:43.928581Z\",\n                \"modified\": \"2022-11-11T17:43:43.928623Z\",\n                \"base\": \"USD\",\n                \"rate\": 5.3236,\n                \"is_enabled\": true,\n                \"status\": \"created\",\n                \"last_update_rate\": \"2022-11-11T17:43:43.919952Z\"\n            },\n            {\n                \"id\": 2,\n                \"code\": \"CAD\",\n                \"creator\": \"migeddalleika-7912@yopmail.com\",\n                \"modifier\": null,\n                \"created\": \"2022-11-11T17:43:43.977702Z\",\n                \"modified\": \"2022-11-11T17:43:43.977738Z\",\n                \"base\": \"USD\",\n                \"rate\": 1.32751,\n                \"is_enabled\": true,\n                \"status\": \"created\",\n                \"last_update_rate\": \"2022-11-11T17:43:43.974616Z\"\n            },\n            {\n                \"id\": 3,\n                \"code\": \"EUR\",\n                \"creator\": \"migeddalleika-7912@yopmail.com\",\n                \"modifier\": null,\n                \"created\": \"2022-11-11T17:43:44.015066Z\",\n                \"modified\": \"2022-11-11T17:43:44.015101Z\",\n                \"base\": \"USD\",\n                \"rate\": 0.967785,\n                \"is_enabled\": true,\n                \"status\": \"created\",\n                \"last_update_rate\": \"2022-11-11T17:43:44.012750Z\"\n            }\n        ]\n    },\n    \"status_code\": 200\n}"
+						}
+					]
+				},
+				{
+					"name": "not implemented:  filter all avialable rates changing base",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/v1/rates/?base=EUR&symbols=ARS,BRL,USD",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"v1",
+								"rates",
+								""
+							],
+							"query": [
+								{
+									"key": "base",
+									"value": "EUR"
+								},
+								{
+									"key": "symbols",
+									"value": "ARS,BRL,USD"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "converter",
+			"item": [
+				{
+					"name": "convert brl to other allowed currencies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/v1/convert/5.3236/BRL/",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"v1",
+								"convert",
+								"5.3236",
+								"BRL",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "convert brl to other allowed currencies",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/v1/convert/589/BRL/",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"v1",
+										"convert",
+										"589",
+										"BRL",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 11 Nov 2022 17:45:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "7688d7258b280104-GRU"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"request_detail\": {\n        \"description\": \"Convert the amount of the currency specified into all the currencies available\",\n        \"request_date_utc\": \"2022-11-11T17:45:14.413435Z\"\n    },\n    \"data\": {\n        \"message\": \"Converted 589 BRL to other currencies\",\n        \"conversion_count\": 3,\n        \"conversion\": {\n            \"BRL\": \"589.000\",\n            \"CAD\": \"146.875\",\n            \"EUR\": \"107.075\"\n        }\n    },\n    \"status_code\": 200\n}"
+						},
+						{
+							"name": "convert brl to other allowed currencies",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/v1/convert/5.3236/BRL/",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"v1",
+										"convert",
+										"5.3236",
+										"BRL",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 11 Nov 2022 17:46:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "7688d899dbb10104-GRU"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"request_detail\": {\n        \"description\": \"Convert the amount of the currency specified into all the currencies available\",\n        \"request_date_utc\": \"2022-11-11T17:46:13.983450Z\"\n    },\n    \"data\": {\n        \"message\": \"Converted 5.3236 BRL to other currencies\",\n        \"conversion_count\": 4,\n        \"conversion\": {\n            \"BRL\": \"5.324\",\n            \"CAD\": \"1.328\",\n            \"EUR\": \"0.968\",\n            \"USD\": \"1.000\"\n        }\n    },\n    \"status_code\": 200\n}"
+						}
+					]
+				},
+				{
+					"name": "not implemented:  convert any currency to any allowed currency",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/v1/convert/589/BRL/EUR",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"v1",
+								"convert",
+								"589",
+								"BRL",
+								"EUR"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "convert value by params",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/v1/convert/?brl=589/",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"v1",
+										"convert",
+										""
+									],
+									"query": [
+										{
+											"key": "brl",
+											"value": "589/"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n\"USD\": 98.23,\n\"EUR\": 83.26,\n\"INR\": 7318.93\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "home",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_base}}/",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "home",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 11 Nov 2022 17:34:24 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "7688c6e2dcb20104-GRU"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "referrer-policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "x-content-type-options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-frame-options",
+							"value": "DENY"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"request_detail\": {\n        \"name\": \"home\",\n        \"description\": \"Currency converter API\",\n        \"request_date_utc\": \"2022-11-11T17:34:24.255376\"\n    },\n    \"data\": {\n        \"message\": \"Up and running\"\n    },\n    \"status_code\": 200\n}"
+				}
+			]
+		}
+	]
+}
