@@ -7,16 +7,14 @@ from rest_framework.viewsets import ViewSet
 
 
 class HomeView(ViewSet):
-    # permission_classes = [AllowAny]
-    permission_classes = [IsAuthenticated, TokenHasScope]
-    required_scopes = ['groups']
+    permission_classes = [AllowAny]
 
     def list(self, request):
         """API home"""
         response = {
             'request_detail': {
                 'name': 'home',
-                'description': 'API home',
+                'description': 'Currency converter API',
                 'request_date_utc': datetime.datetime.utcnow(),
             },
             'data': {
