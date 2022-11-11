@@ -16,6 +16,7 @@ factory-boy = "*"
 pytest-cov = "*"
 pytest-xdist = "*"
 pytest-factoryboy = "*"
+django-redis = "*"
 
 [dev-packages]
 psycopg2-binary = "*"

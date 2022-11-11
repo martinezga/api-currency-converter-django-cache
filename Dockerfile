@@ -27,6 +27,7 @@ USER appuser
 
 FROM base as dev
 
+ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
 CMD bin bash
 
 FROM base as prod

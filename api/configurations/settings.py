@@ -216,3 +216,22 @@ DEFAULT_FROM_EMAIL = config('EMAIL_DEFAULT')
 
 # -- Automatic admin creation by email domain
 ADMIN_DOMAIN = config('ADMIN_DOMAIN', default='yopmail.com', cast=Csv())
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": config("CACHE_REDIS_URL", default="redis://localhost:6379/1"),
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "CLOSE_CONNECTION": True,
+            "SERIALIZER": "django_redis.serializers.json.JSONSerializer",
+            "CONNECTION_POOL_KWARGS": {"retry_on_timeout": True},
+            "COMPRESSOR": "django_redis.compressors.zlib.ZlibCompressor",
+        },
+        "KEY_PREFIX": "currencies",
+    }
+}
+
+# For cache timeout
+# default 8 hours
+CACHE_TTL = config("CACHE_TTL", default=(60 * 60 * 8), cast=int)

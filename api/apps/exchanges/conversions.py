@@ -1,14 +1,25 @@
 from decimal import Decimal, getcontext
 
+from django.conf import settings
+from django.core.cache import cache
+
 from apps.exchanges.models import ExchangeRateModel
+
+# For cache timeout
+CACHE_TTL = settings.CACHE_TTL
 
 
 class ConvertCurrency:
 
     def convert_currency(self, amount, from_obj, to_obj):
-        getcontext().prec = 9
-        conversion_rate = Decimal(to_obj.rate) / Decimal(from_obj.rate)
-        # Save in cache ratio 'to_code/from_code' = conversion_rate
+        conversion_ratio = f'{to_obj.code.code}/{from_obj.code.code}'
+
+        conversion_rate = cache.get(conversion_ratio)
+        if not conversion_rate:
+            getcontext().prec = 9
+            conversion_rate = Decimal(to_obj.rate) / Decimal(from_obj.rate)
+            # Save in cache
+            cache.set(conversion_ratio, conversion_rate, timeout=CACHE_TTL)
 
         return Decimal(amount) * Decimal(conversion_rate)
 
