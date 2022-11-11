@@ -8,6 +8,9 @@ class CurrencyFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = CurrencyModel
 
-    code = factory.Faker('pystr', max_chars=10)
-    name = factory.Faker('sentence', nb_words=3)
+    class Params:
+        currency_full = factory.Faker('currency')
+
+    code = factory.LazyAttribute(lambda o: f'{o.currency_full[0]}')
+    name = factory.LazyAttribute(lambda o: f'{o.currency_full[1]}')
     creator = factory.SubFactory(AccountFactory)
