@@ -17,6 +17,7 @@ pytest-cov = "*"
 pytest-xdist = "*"
 pytest-factoryboy = "*"
 django-redis = "*"
+apscheduler = "*"
 
 [dev-packages]
 psycopg2-binary = "*"

@@ -232,6 +232,9 @@ CACHES = {
     }
 }
 
-# For cache timeout
+# -- For cache timeout
 # default 8 hours
 CACHE_TTL = config("CACHE_TTL", default=(60 * 60 * 8), cast=int)
+
+# -- Exchange rates Update
+CRON_UPDATE_RATES = config("CRON_UPDATE_RATES", default=None)

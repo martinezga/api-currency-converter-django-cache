@@ -23,17 +23,18 @@ This can cause a _response delay of up to 30 seconds_ for the first request that
 * Docker
 * Render - Cloud Application Hosting
 * openexchangerates.org API
+* apscheduler
 
 ### 📖 Description
 
 - Custom User Model
 - Passwordless authentication
+- Has a cron job to update exchange rates daily
 
 ### 🔎 Improvements
 
-- Create a cron job to update exchange rates daily
 - Logging
-- More test
+- More tests
 - Complete endpoints (see Postman collection)
 - Filtering and searching
 
