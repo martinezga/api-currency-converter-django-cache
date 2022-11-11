@@ -31,3 +31,6 @@ class ExchangeRateModel(AuditModel):
     class Meta:
         db_table = 'exchange_rates'
         ordering = ['code']
+        constraints = [
+            models.UniqueConstraint(fields=['code', 'base'], name='unique conversion by base')
+        ]
