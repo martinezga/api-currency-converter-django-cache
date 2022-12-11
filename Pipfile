@@ -18,6 +18,7 @@ pytest-xdist = "*"
 pytest-factoryboy = "*"
 django-redis = "*"
 apscheduler = "*"
+drf-spectacular = "==0.24.2"
 
 [dev-packages]
 psycopg2-binary = "*"

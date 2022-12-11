@@ -50,6 +50,7 @@ THIRD_PARTY_APPS = [
     'rest_framework',
     'corsheaders',
     'oauth2_provider',
+    'drf_spectacular',
 ]
 
 OWNER_APPS = [
@@ -190,6 +191,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 # -- Django OAuth Toolkit
 # https://django-oauth-toolkit.readthedocs.io/en/latest/rest-framework/rest-framework.html
@@ -238,3 +240,13 @@ CACHE_TTL = config("CACHE_TTL", default=(60 * 60 * 8), cast=int)
 
 # -- Exchange rates Update
 CRON_UPDATE_RATES = config("CRON_UPDATE_RATES", default=None)
+
+# -- API documentation
+# -- https://github.com/tfranzel/drf-spectacular/
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Currency converter API',
+    'DESCRIPTION': 'Currency converter API with passwordless authentication to setup currencies allowed.',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
+}
