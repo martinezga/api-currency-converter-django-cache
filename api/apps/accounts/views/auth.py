@@ -3,7 +3,9 @@ import smtplib
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import update_last_login
 from django.utils import timezone
+from drf_spectacular.utils import extend_schema, inline_serializer
 from oauth2_provider.models import AccessToken
+from rest_framework import serializers
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -17,10 +19,55 @@ UserModel = get_user_model()
 class AuthView(ViewSet):
     permission_classes = [AllowAny]
 
+    @extend_schema(
+        request=inline_serializer(
+            name='InlineOneOffSerializer',
+            fields={
+                'email': serializers.EmailField(),
+            }
+        ),
+        responses={
+            200: inline_serializer(
+                name='Successfully response',
+                fields={
+                    'request_detail': serializers.DictField(
+                        child=serializers.CharField(),
+                        default={
+                            'description': 'Send access token to email informed. Previous registration not required',
+                            'request_date_utc': timezone.now()
+                        }),
+                    'data': serializers.DictField(
+                        child=serializers.CharField(),
+                        default={
+                            'message': 'Email sent'
+                        }),
+                    'status_code': serializers.IntegerField(default=200),
+                }
+            ),
+            400: inline_serializer(
+                name='Bad request',
+                fields={
+                    'request_detail': serializers.DictField(
+                        child=serializers.CharField(),
+                        default={
+                            'description': 'Send access token to email informed. Previous registration not required',
+                            'request_date_utc': timezone.now()
+                        }),
+                    'data': serializers.DictField(
+                        child=serializers.CharField(),
+                        default={
+                            'message': 'An error occurred',
+                            'error': "'Didn't send the email. Try again'"
+                        }),
+                    'status_code': serializers.IntegerField(default=400),
+                }
+            ),
+        },
+    )
     @action(detail=False, methods=['post'])
     def access(self, request):
         """
-        Input: {"email": "my_email@email.com"}
+        Send access token to email informed. Previous registration not required
         """
         custom_util = CustomUtil()
         response = custom_util.response
