@@ -22,14 +22,14 @@ class AuthView(ViewSet):
     @extend_schema(
         auth=[],  # explicit empty list / remove auth methods override
         request=inline_serializer(
-            name='InlineOneOffSerializer',
+            name='AuthAccessInlineSerializer',
             fields={
                 'email': serializers.EmailField(),
             }
         ),
         responses={
             200: inline_serializer(
-                name='Successfully response',
+                name='Auth access - Successfully response',
                 fields={
                     'request_detail': serializers.DictField(
                         child=serializers.CharField(),
@@ -46,7 +46,7 @@ class AuthView(ViewSet):
                 }
             ),
             400: inline_serializer(
-                name='Bad request',
+                name='Auth access - Bad request',
                 fields={
                     'request_detail': serializers.DictField(
                         child=serializers.CharField(),
