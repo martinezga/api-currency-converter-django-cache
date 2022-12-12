@@ -1,7 +1,7 @@
 import datetime
 
-from rest_framework.permissions import AllowAny, IsAuthenticated
-from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope, TokenHasScope
+from drf_spectacular.utils import extend_schema
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
 
@@ -9,6 +9,9 @@ from rest_framework.viewsets import ViewSet
 class HomeView(ViewSet):
     permission_classes = [AllowAny]
 
+    @extend_schema(
+        auth=[],
+    )
     def list(self, request):
         """API home"""
         response = {

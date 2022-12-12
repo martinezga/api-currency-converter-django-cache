@@ -1,3 +1,4 @@
+from drf_spectacular.utils import extend_schema
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
@@ -20,6 +21,9 @@ class CurrencyView(ViewSet):
             permission_classes = (AllowAny,)
         return [permission() for permission in permission_classes]
 
+    @extend_schema(
+        auth=[],
+    )
     def list(self, request):
         response = CustomUtil().response
         description = 'List all active and allowed currencies'
@@ -35,6 +39,9 @@ class CurrencyView(ViewSet):
 
         return Response(response, status=response['status_code'])
 
+    @extend_schema(
+        auth=[],
+    )
     @action(detail=False)
     def to_implement(self, request):
         response = CustomUtil().response
@@ -84,7 +91,7 @@ class CurrencyView(ViewSet):
         if serializer.is_valid():
             serializer.save()
             response['data']['message'] = f'Created'
-            response['status_code'] = 200
+            response['status_code'] = 201
         else:
             response['data']['message'] = serializer.errors
 

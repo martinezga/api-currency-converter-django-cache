@@ -1,3 +1,4 @@
+from drf_spectacular.utils import extend_schema
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -12,6 +13,9 @@ from apps.utils.custom import CustomUtil
 class ConverterView(ViewSet):
     permission_classes = (AllowAny, )
 
+    @extend_schema(
+        auth=[],
+    )
     @action(detail=False, url_path='(?P<amount>[.\w]+)/(?P<currency_code>\w+)')
     def one_currency_to_all(self, request, amount, currency_code):
         response = CustomUtil().response

@@ -20,6 +20,7 @@ class AuthView(ViewSet):
     permission_classes = [AllowAny]
 
     @extend_schema(
+        auth=[],  # explicit empty list / remove auth methods override
         request=inline_serializer(
             name='InlineOneOffSerializer',
             fields={
@@ -106,6 +107,9 @@ class AuthView(ViewSet):
 
         return Response(response, status=response['status_code'])
 
+    @extend_schema(
+        auth=[],
+    )
     @action(detail=False, methods=['post'])
     def login(self, request):
         """
@@ -151,6 +155,9 @@ class AuthView(ViewSet):
 
         return Response(response, status=response['status_code'])
 
+    @extend_schema(
+        auth=[],
+    )
     @action(detail=False, methods=['post'], url_path='password/provisional')
     def provisional_password(self, request):
         """
