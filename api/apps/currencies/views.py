@@ -1,4 +1,6 @@
-from drf_spectacular.utils import extend_schema
+from django.utils import timezone
+from drf_spectacular.utils import extend_schema, inline_serializer
+from rest_framework import serializers
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
@@ -77,8 +79,63 @@ class CurrencyView(ViewSet):
 
         return Response(response, status=response['status_code'])
 
+    @extend_schema(
+        request=inline_serializer(
+            name='CurrenciesCreationInlineSerializer',
+            fields={
+                'currencies': serializers.ListField(
+                    child=serializers.CharField(),
+                    default=['USD', 'BRL', ]
+                ),
+            }
+        ),
+        responses={
+            201: inline_serializer(
+                name='Currencies creation - Successfully response',
+                fields={
+                    'request_detail': serializers.DictField(
+                        child=serializers.CharField(),
+                        default={
+                            'description': 'Add new currencies to allow its use on our API',
+                            'request_date_utc': timezone.now()
+                        }),
+                    'data': serializers.DictField(
+                        child=serializers.CharField(),
+                        default={
+                            'message': 'Created'
+                        }),
+                    'status_code': serializers.IntegerField(default=201),
+                }
+            ),
+            400: inline_serializer(
+                name='Currencies creation - Bad request',
+                fields={
+                    'request_detail': serializers.DictField(
+                        child=serializers.CharField(),
+                        default={
+                            'description': 'Add new currencies to allow its use on our API',
+                            'request_date_utc': timezone.now()
+                        }),
+                    'data': serializers.DictField(
+                        child=serializers.DictField(),
+                        default={
+                            'message': {
+                                'currencies': 'No currencies to add. Verify values exists',
+                            }
+                        }),
+                    'status_code': serializers.IntegerField(default=400),
+                }
+            ),
+            401: inline_serializer(
+                name='Unauthorized',
+                fields={
+                    'detail': serializers.CharField(default='Authentication credentials were not provided'),
+                }
+            ),
+        },
+    )
     def create(self, request):
-        """Input: {'currencies': ['code1', 'code2', ... ]}"""
+        """Admin resource. Add new currencies to allow its use on our API"""
 
         response = CustomUtil().response
         description = 'Add new currencies to allow its use on our API'
